@@ -1,0 +1,9 @@
+1. Add experiences
+2. Fix scrolling and arrow button in campus involvement
+3. For project card, have the github and live demo be displayed at the same line for every card
+4. better intro
+5. Fix color scheme for nav bar
+6. Try to add a logo to every project
+7. Add picture
+8. The text content should be professional, story selling
+9. Make a placecard for certifications
