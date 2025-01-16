@@ -11,6 +11,6 @@ Looking for SWE Internship Roles
 ### About me
 ➤ Prev Software Engineer Intern at a Health Tech Startup <br>
 ➤ Based In: **New York City** <br>
-➤ Look at my **<a align="center" href="[https://drive.google.com/file/d/1R6zg1X8SUKDoBnXlM6jPzpQtv82g6nZt/view?usp=sharing](https://drive.google.com/file/d/1TJXCD3TWFvaftkLv_xw_CI7DOMqmoMzF/view?usp=share_link)" target="_blank">Resume</a>** <br>
+➤ Look at my **<a align="center" href="https://drive.google.com/file/d/1TJXCD3TWFvaftkLv_xw_CI7DOMqmoMzF/view?usp=share_link" target="_blank">Resume</a>** <br>
 ➤ Check out my **<a align="center" href="https://www.linkedin.com/in/arnavdeepaware/" target="_blank">LinkedIn</a>** <br>
 ➤ Contact me: **arnav.deepaware@gmail.com**
