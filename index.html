@@ -16,7 +16,6 @@
             --card-bg: #ffffff;
             --card-border: #e0e0e0;
             --text-shadow: none; /* Ensures text is flat */
-            
         }
 
         * {
@@ -219,6 +218,42 @@
             border-color: var(--accent-primary);
         }
 
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 95, 115, 0.1);
+        }
+
+        .experience-card h3 {
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-card .company {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-card .duration {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -226,6 +261,9 @@
         }
 
         .project-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 12px;
@@ -233,6 +271,16 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+        }
+
+        .project-card h3 {
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            flex-grow: 1;
+            margin-bottom: 1rem;
         }
 
         .project-card::before {
@@ -259,9 +307,10 @@
         }
 
         .project-links {
+            margin-top: auto;
             display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 1.5rem;
+            justify-content: flex-start;
         }
 
         .project-links a {
@@ -281,13 +330,13 @@
         .involvement-container {
             position: relative;
             padding: 0 3rem;
+            overflow: hidden;
         }
 
         .involvement-slider {
             display: flex;
             gap: 2rem;
-            overflow: hidden;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.5s ease;
         }
 
         .involvement-item {
@@ -322,22 +371,22 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: var(--card-bg);
-            color: var(--text-primary);
+            z-index: 10;
             width: 40px;
             height: 40px;
             border-radius: 50%;
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            border: 1px solid var(--card-border);
             transition: all 0.3s ease;
         }
 
         .slider-arrow:hover {
-            background: var(--accent-primary);
-            border-color: var(--accent-secondary);
+            background: var(--accent-secondary);
         }
 
         .slider-arrow.left {
@@ -473,6 +522,39 @@
             </table>
         </section>
 
+        <section id="experience">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <h3>Software Engineering Intern</h3>
+                    <div class="company">Google</div>
+                    <div class="duration">May 2023 - Aug 2023</div>
+                    <p>• Developed and maintained scalable software solutions using Java and Python</p>
+                    <p>• Collaborated with cross-functional teams to implement new features</p>
+                    <p>• Improved system performance by optimizing database queries</p>
+                </div>
+
+                <div class="experience-card">
+                    <h3>Technology Analyst</h3>
+                    <div class="company">Goldman Sachs</div>
+                    <div class="duration">Jun 2022 - Aug 2022</div>
+                    <p>• Built automation tools to streamline trading operations</p>
+                    <p>• Implemented RESTful APIs using Spring Boot</p>
+                    <p>• Worked with agile methodologies in a fast-paced environment</p>
+                </div>
+
+                <div class="experience-card">
+                    <h3>Software Development Fellow</h3>
+                    <div class="company">MLH Fellowship</div>
+                    <div class="duration">Jan 2022 - Apr 2022</div>
+                    <p>• Contributed to open-source projects using React and Node.js</p>
+                    <p>• Mentored junior developers and led technical workshops</p>
+                    <p>• Developed full-stack applications with modern technologies</p>
+                </div>
+            </div>
+        </section>
+
+
         <section id="projects">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
@@ -584,25 +666,45 @@
             observer.observe(section);
         });
 
-        // Involvement slider functionality
+        // Updated slider functionality
         let currentSlide = 0;
-        const slider = document.querySelector('.involvement-slider');
-        const slides = document.querySelectorAll('.involvement-item');
-        const slidesPerView = window.innerWidth > 768 ? 3 : 1;
+            const slider = document.querySelector('.involvement-slider');
+            const slides = document.querySelectorAll('.involvement-item');
+            const slidesPerView = window.innerWidth > 768 ? 3 : 1;
+            const maxSlide = Math.max(0, slides.length - slidesPerView);
 
-        function slideInvolvement(direction) {
-            const maxSlide = slides.length - slidesPerView;
-            currentSlide = Math.max(0, Math.min(currentSlide + direction, maxSlide));
-            const offset = -(currentSlide * (100 / slidesPerView));
-            slider.style.transform = `translateX(${offset}%)`;
-        }
+            function slideInvolvement(direction) {
+                currentSlide = Math.max(0, Math.min(currentSlide + direction, maxSlide));
+                updateSliderPosition();
+            }
 
-        // Initialize slider
-        slider.style.transition = 'transform 0.3s ease-in-out';
-        slider.style.width = `${(100 * slides.length / slidesPerView)}%`;
-        slides.forEach(slide => {
-            slide.style.width = `${100 / slides.length}%`;
-        });
+            function updateSliderPosition() {
+                const slideWidth = 100 / slidesPerView;
+                const offset = -currentSlide * slideWidth;
+                slider.style.transform = `translateX(${offset}%)`;
+                
+                // Update button states
+                const leftButton = document.querySelector('.slider-arrow.left');
+                const rightButton = document.querySelector('.slider-arrow.right');
+                
+                leftButton.style.opacity = currentSlide === 0 ? '0.5' : '1';
+                leftButton.style.cursor = currentSlide === 0 ? 'not-allowed' : 'pointer';
+                
+                rightButton.style.opacity = currentSlide === maxSlide ? '0.5' : '1';
+                rightButton.style.cursor = currentSlide === maxSlide ? 'not-allowed' : 'pointer';
+            }
+
+            // Initialize slider
+            window.addEventListener('resize', () => {
+                const newSlidesPerView = window.innerWidth > 768 ? 3 : 1;
+                if (slidesPerView !== newSlidesPerView) {
+                    currentSlide = 0;
+                    updateSliderPosition();
+                }
+            });
+
+            // Initial setup
+            updateSliderPosition();
     </script>
 </body>
 </html>
