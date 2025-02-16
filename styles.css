@@ -325,6 +325,10 @@ section.visible {
     border-radius: 12px;
     padding: 1.5rem;
     transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease;
 }
 
 .involvement-item:hover {
@@ -344,6 +348,13 @@ section.visible {
 
 .involvement-item:hover .involvement-img {
     transform: scale(1.05);
+}
+
+.involvement-item h4 {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #666;
+    font-weight: 500;
 }
 
 .slider-arrow {
@@ -537,7 +548,7 @@ footer {
 
 .timeline {
     position: relative;
-    max-width: 1000px;
+    max-width: 1200px; /* Increased from 1000px to allow more width */
     margin: 0 auto;
     padding: 2rem 0;
 }
@@ -573,20 +584,20 @@ footer {
 }
 
 .timeline-content {
-    width: 45%;
+    width: 52%; /* Increased from 48% */
     padding: 0 2rem;
     position: relative;
-    text-align: left;  /* Change from right to left alignment */
+    text-align: left;
 }
 
 .timeline-item:nth-child(odd) .timeline-content {
     margin-left: auto;
-    transform: translateX(2rem);
+    transform: translateX(2rem); /* Keeps same distance from timeline */
 }
 
 .timeline-item:nth-child(even) .timeline-content {
     margin-right: auto;
-    transform: translateX(-2rem);
+    transform: translateX(-2rem); /* Keeps same distance from timeline */
     text-align: left;  /* Change from right to left alignment */
 }
 
@@ -602,7 +613,7 @@ footer {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1.75rem; /* Slightly increased padding */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: left;  /* Ensure card content is left-aligned */
