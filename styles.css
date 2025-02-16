@@ -1,3 +1,4 @@
+/* Root variables for consistent theming */
 :root {
     --bg-primary: #fdfdfd;
     --bg-secondary: #f1f3f5;
@@ -10,6 +11,7 @@
     --text-shadow: none;
 }
 
+/* Base styles and resets */
 * {
     margin: 0;
     padding: 0;
@@ -660,3 +662,21 @@ footer {
         text-align: left;
     }
 }
+
+.subsection-title {
+    color: var(--accent-primary);
+    margin: 2.5rem 0 1.5rem;
+    font-size: 1.5rem;
+}
+
+/* Comment out certification styles for later implementation
+.certifications-grid {
+    ...
+}
+
+.certification-card {
+    ...
+}
+*/
+
+/* Keep other existing styles... */
