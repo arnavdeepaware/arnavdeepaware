@@ -576,6 +576,7 @@ footer {
     width: 45%;
     padding: 0 2rem;
     position: relative;
+    text-align: left;  /* Change from right to left alignment */
 }
 
 .timeline-item:nth-child(odd) .timeline-content {
@@ -586,7 +587,7 @@ footer {
 .timeline-item:nth-child(even) .timeline-content {
     margin-right: auto;
     transform: translateX(-2rem);
-    text-align: right;
+    text-align: left;  /* Change from right to left alignment */
 }
 
 .timeline-date {
@@ -594,6 +595,7 @@ footer {
     color: var(--accent-primary);
     margin-bottom: 0.5rem;
     font-weight: 500;
+    text-align: left;  /* Change from right to left alignment if needed */
 }
 
 .timeline-card {
@@ -603,6 +605,7 @@ footer {
     padding: 1.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;  /* Ensure card content is left-aligned */
 }
 
 .timeline-card:hover {
@@ -659,7 +662,7 @@ footer {
     .timeline-item:nth-child(even) .timeline-content {
         margin: 0;
         transform: none;
-        text-align: left;
+        text-align: left;  /* Change from right to left alignment */
     }
 }
 
