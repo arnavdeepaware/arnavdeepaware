@@ -5,483 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arnav Deepaware - Software Engineer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --bg-primary: #fdfdfd;
-            --bg-secondary: #f1f3f5;
-            --accent-primary: #005f73; /* Strong teal */
-            --accent-secondary: #005f73; /* Soft complement to teal */
-            --text-primary: #2e2e2e; /* Crisp, no light effect */
-            --text-secondary: #5c5c5c; /* Subtle but solid */
-            --card-bg: #ffffff;
-            --card-border: #e0e0e0;
-            --text-shadow: none; /* Ensures text is flat */
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-primary);
-            border-radius: 4px;
-        }
-
-        header {
-            background-color: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: bold;
-            font-size: 1.5rem;
-            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        main {
-            margin-top: 4rem;
-            padding: 2rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        section {
-            margin-bottom: 6rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s, transform 0.5s;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .hero {
-            text-align: center;
-            padding: 6rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 3rem;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, var(--accent-primary) 0%, transparent 70%);
-            opacity: 0.1;
-            pointer-events: none;
-        }
-
-        .profile-image {
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid transparent;
-            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary)) border-box;
-            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            mask-composite: exclude;
-            -webkit-mask-composite: destination-out;
-            filter: drop-shadow(0 0 10px rgba(100, 108, 255, 0.3));
-            transition: transform 0.3s ease;
-        }
-
-        .profile-image:hover {
-            transform: scale(1.05);
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientText 3s ease infinite;
-        }
-
-        @keyframes gradientText {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 2.5rem;
-            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        .skills-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 1rem;
-            margin-top: 2rem;
-        }
-
-        .skills-table td {
-            padding: 1rem;
-            background: var(--card-bg);
-            border-radius: 8px;
-            border: 1px solid var(--card-border);
-            transition: all 0.3s ease;
-        }
-
-        .skills-table td:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(100, 108, 255, 0.2);
-            border-color: var(--accent-primary);
-        }
-
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .experience-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .experience-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0, 95, 115, 0.1);
-        }
-
-        .experience-card h3 {
-            color: var(--accent-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-card .company {
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-card .duration {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card h3 {
-            color: var(--accent-primary);
-            margin-bottom: 1rem;
-        }
-
-        .project-card p {
-            flex-grow: 1;
-            margin-bottom: 1rem;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-primary);
-            box-shadow: 0 8px 16px rgba(100, 108, 255, 0.15);
-        }
-
-        .project-card:hover::before {
-            opacity: 0.05;
-        }
-
-        .project-links {
-            margin-top: auto;
-            display: flex;
-            gap: 1.5rem;
-            justify-content: flex-start;
-        }
-
-        .project-links a {
-            text-decoration: none;
-            color: var(--accent-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .project-links a:hover {
-            color: var(--accent-secondary);
-            transform: translateX(3px);
-        }
-
-        .involvement-container {
-            position: relative;
-            padding: 0 3rem;
-            overflow: hidden;
-        }
-
-        .involvement-slider {
-            display: flex;
-            gap: 2rem;
-            transition: transform 0.5s ease;
-        }
-
-        .involvement-item {
-            min-width: calc(33.333% - 1.33rem);
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .involvement-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-primary);
-            box-shadow: 0 8px 16px rgba(100, 108, 255, 0.15);
-        }
-
-        .involvement-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .involvement-item:hover .involvement-img {
-            transform: scale(1.05);
-        }
-
-        .slider-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--accent-primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .slider-arrow:hover {
-            background: var(--accent-secondary);
-        }
-
-        .slider-arrow.left {
-            left: 0;
-        }
-
-        .slider-arrow.right {
-            right: 0;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 500;
-            font-size: 1.1rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--text-primary);
-            background: var(--accent-primary);
-            border-color: var(--accent-secondary);
-            transform: translateY(-3px);
-        }
-
-        .social-links i {
-            font-size: 1.5rem;
-        }
-
-        footer {
-            background: var(--bg-secondary);
-            padding: 2rem;
-            text-align: center;
-            margin-top: 4rem;
-            color: var(--text-secondary);
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero {
-                flex-direction: column;
-                padding: 4rem 0;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .involvement-item {
-                min-width: calc(100% - 2rem);
-            }
-            
-            .social-links {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .social-links a {
-                justify-content: center;
-            }
-        }
-
-        /* Glass morphism effect for cards */
-        .glass-effect {
-            background: rgba(26, 26, 35, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <!-- Rest of the HTML remains the same -->
-[Previous HTML content from line 436 onwards remains exactly the same]
 <body>
     <header>
         <nav>
-            <div class="logo">AD</div>
+            <div class="logo">Hello World</div>
             <div class="nav-links">
                 <a href="#about">About</a>
+                <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
                 <a href="#involvement">Involvement</a>
                 <a href="#contact">Contact</a>
@@ -524,62 +57,103 @@
 
         <section id="experience">
             <h2 class="section-title">Experience</h2>
-            <div class="experience-grid">
-                <div class="experience-card">
-                    <h3>Software Engineering Intern</h3>
-                    <div class="company">Google</div>
-                    <div class="duration">May 2023 - Aug 2023</div>
-                    <p>• Developed and maintained scalable software solutions using Java and Python</p>
-                    <p>• Collaborated with cross-functional teams to implement new features</p>
-                    <p>• Improved system performance by optimizing database queries</p>
+            <div class="experience-container">
+                <button class="slider-arrow left" onclick="slideExperience(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="experience-slider">
+                    <div class="experience-card">
+                        <h3>Software Engineering Intern</h3>
+                        <div class="company">Google</div>
+                        <div class="duration">May 2023 - Aug 2023</div>
+                        <p>• Developed and maintained scalable software solutions using Java and Python</p>
+                        <p>• Collaborated with cross-functional teams to implement new features</p>
+                        <p>• Improved system performance by optimizing database queries</p>
+                    </div>
+                    <div class="experience-card">
+                        <h3>Technology Analyst</h3>
+                        <div class="company">Goldman Sachs</div>
+                        <div class="duration">Jun 2022 - Aug 2022</div>
+                        <p>• Built automation tools to streamline trading operations</p>
+                        <p>• Implemented RESTful APIs using Spring Boot</p>
+                        <p>• Worked with agile methodologies in a fast-paced environment</p>
+                    </div>
+                    <div class="experience-card">
+                        <h3>Software Development Fellow</h3>
+                        <div class="company">MLH Fellowship</div>
+                        <div class="duration">Jan 2022 - Apr 2022</div>
+                        <p>• Contributed to open-source projects using React and Node.js</p>
+                        <p>• Mentored junior developers and led technical workshops</p>
+                        <p>• Developed full-stack applications with modern technologies</p>
+                    </div>
+                    <div class="experience-card">
+                        <h3>Software Developer</h3>
+                        <div class="company">Tech Startup XYZ</div>
+                        <div class="duration">Jun 2021 - Dec 2021</div>
+                        <p>• Developed full-stack web applications using React and Node.js</p>
+                        <p>• Implemented CI/CD pipelines to streamline deployment process</p>
+                        <p>• Collaborated with UX team to improve user experience</p>
+                    </div>
                 </div>
-
-                <div class="experience-card">
-                    <h3>Technology Analyst</h3>
-                    <div class="company">Goldman Sachs</div>
-                    <div class="duration">Jun 2022 - Aug 2022</div>
-                    <p>• Built automation tools to streamline trading operations</p>
-                    <p>• Implemented RESTful APIs using Spring Boot</p>
-                    <p>• Worked with agile methodologies in a fast-paced environment</p>
-                </div>
-
-                <div class="experience-card">
-                    <h3>Software Development Fellow</h3>
-                    <div class="company">MLH Fellowship</div>
-                    <div class="duration">Jan 2022 - Apr 2022</div>
-                    <p>• Contributed to open-source projects using React and Node.js</p>
-                    <p>• Mentored junior developers and led technical workshops</p>
-                    <p>• Developed full-stack applications with modern technologies</p>
-                </div>
+                <button class="slider-arrow right" onclick="slideExperience(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </section>
 
-
         <section id="projects">
             <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>Project Title 1</h3>
-                    <p>Detailed description of your first project, highlighting the problem solved, technologies used, and your specific contributions.</p>
-                    <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+            <div class="projects-container">
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>Project Title 1</h3>
+                        <p>Detailed description of your first project, highlighting the problem solved, technologies used, and your specific contributions.</p>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
                     </div>
-                </div>
-                <div class="project-card">
-                    <h3>Project Title 2</h3>
-                    <p>Description of your second project, emphasizing the technical challenges overcome and the impact of your solution.</p>
-                    <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    <div class="project-card">
+                        <h3>Project Title 2</h3>
+                        <p>Description of your second project, emphasizing the technical challenges overcome and the impact of your solution.</p>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
                     </div>
-                </div>
-                <div class="project-card">
-                    <h3>Project Title 3</h3>
-                    <p>Overview of your third project, focusing on the innovative aspects and the technologies implemented.</p>
-                    <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    <div class="project-card">
+                        <h3>Project Title 3</h3>
+                        <p>Overview of your third project, focusing on the innovative aspects and the technologies implemented.</p>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Project Title 4</h3>
+                        <p>Comprehensive description of your fourth project, detailing the technical challenges, implementation approach, and the impact of your solution. Include specific technologies and methodologies used.</p>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Project Title 5</h3>
+                        <p>In-depth overview of your fifth project, highlighting the problem-solving process, technical stack decisions, and the final outcomes. Discuss the key features and learning experiences.</p>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Project Title 6</h3>
+                        <p>Detailed explanation of your sixth project, emphasizing the architectural decisions, implementation challenges, and the solutions developed. Include the technologies and tools utilized.</p>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -632,79 +206,13 @@
                 <a href="mailto:your.email@example.com">
                     <i class="fas fa-envelope"></i> Email
                 </a>
+                <a href="/path-to-your-resume.pdf" target="_blank" class="resume-button">
+                    <i class="fas fa-file-alt"></i> Resume
+                </a>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>© 2024 Arnav Deepaware. All rights reserved.</p>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Intersection Observer for scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        document.querySelectorAll('section').forEach((section) => {
-            observer.observe(section);
-        });
-
-        // Updated slider functionality
-        let currentSlide = 0;
-            const slider = document.querySelector('.involvement-slider');
-            const slides = document.querySelectorAll('.involvement-item');
-            const slidesPerView = window.innerWidth > 768 ? 3 : 1;
-            const maxSlide = Math.max(0, slides.length - slidesPerView);
-
-            function slideInvolvement(direction) {
-                currentSlide = Math.max(0, Math.min(currentSlide + direction, maxSlide));
-                updateSliderPosition();
-            }
-
-            function updateSliderPosition() {
-                const slideWidth = 100 / slidesPerView;
-                const offset = -currentSlide * slideWidth;
-                slider.style.transform = `translateX(${offset}%)`;
-                
-                // Update button states
-                const leftButton = document.querySelector('.slider-arrow.left');
-                const rightButton = document.querySelector('.slider-arrow.right');
-                
-                leftButton.style.opacity = currentSlide === 0 ? '0.5' : '1';
-                leftButton.style.cursor = currentSlide === 0 ? 'not-allowed' : 'pointer';
-                
-                rightButton.style.opacity = currentSlide === maxSlide ? '0.5' : '1';
-                rightButton.style.cursor = currentSlide === maxSlide ? 'not-allowed' : 'pointer';
-            }
-
-            // Initialize slider
-            window.addEventListener('resize', () => {
-                const newSlidesPerView = window.innerWidth > 768 ? 3 : 1;
-                if (slidesPerView !== newSlidesPerView) {
-                    currentSlide = 0;
-                    updateSliderPosition();
-                }
-            });
-
-            // Initial setup
-            updateSliderPosition();
-    </script>
+<script src="script.js"></script>
 </body>
 </html>
