@@ -14,6 +14,19 @@
 - 💡 Passionate about building scalable applications and solving complex problems
 - 🌱 Leading TEDxCUNY as Logistics & Engagement Director
 
+## 🔗 Connect With Me
+<p align="center">
+  <a href="https://www.linkedin.com/in/arnavdeepaware/">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+  <a href="https://www.arnavd.co">
+    <img src="https://img.shields.io/badge/Portfolio-FF7139?style=for-the-badge&logo=About.me&logoColor=white" alt="Portfolio"/>
+  </a>
+  <a href="https://www.arnavd.co/Resume_Arnav.Deepaware.pdf">
+    <img src="https://img.shields.io/badge/Resume-4285F4?style=for-the-badge&logo=google-drive&logoColor=white" alt="Resume"/>
+  </a>
+</p>
+
 ## 🛠️ Tech Stack
 
 <p>
