@@ -6,9 +6,10 @@
 
 
 ## 💫 About Me
-- 🎓 Computer Science student at CUNY City College of New York 
-- 💼 Software Engineering Mentee at Google x Basta
-- 🌟 Previous SWE Intern at The Difference LLC
+- 🎓 Computer Science student @ CUNY City College of New York 
+- 💼 Software Engineering Mentee @ Google x Basta
+- 🌟 Previous SWE Intern @ The Difference LLC
+- 🤖 Incoming AI Fellow @ Break Through Tech
 - 📍 Based in New York City
 - 🎯 Currently seeking Summer 2025 SWE Internship opportunities
 - 💡 Passionate about building scalable applications and solving complex problems
