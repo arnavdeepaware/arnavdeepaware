@@ -7,13 +7,11 @@
 
 ## 💫 About Me
 - 🎓 Computer Science student @ CUNY City College of New York 
-- 💼 Software Engineering Mentee @ Google x Basta
+- 💼 Product Dev Intern @ truCurrent 
 - 🌟 Previous SWE Intern @ The Difference LLC
-- 🤖 Incoming AI Fellow @ Break Through Tech
+- 🤖 AI Fellow @ Break Through Tech
 - 📍 Based in New York City
-- 🎯 Currently seeking Summer 2025 SWE Internship opportunities
 - 💡 Passionate about building scalable applications and solving complex problems
-- 🌱 Leading TEDxCUNY as Logistics & Engagement Director
 
 ## 🔗 Connect With Me
 <p align="center">
