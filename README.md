@@ -86,6 +86,11 @@
 </p>
 
 
+## 🔬 Featured Projects
+
+- **AI Studio Portfolio @ Break Through Tech**  
+  [my-eCornell-Portfolio](https://github.com/arnavdeepaware/my-eCornell-Portfolio)  
+  A collection of AI projects developed during my AI Studio fellowship, showcasing applications in machine learning and data science.
 
 
 ## 📊 GitHub Stats
