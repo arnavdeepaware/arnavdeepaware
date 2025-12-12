@@ -172,3 +172,24 @@ window.addEventListener('resize', () => {
 
 // Initialize experience slider
 updateExperienceSliderPosition();
+
+/**
+ * Toggle visibility of hidden projects
+ */
+function toggleProjects() {
+    const hiddenProjects = document.querySelectorAll('.hidden-project');
+    const btn = document.querySelector('.show-more-btn');
+    const btnText = btn.querySelector('.show-more-text');
+    
+    hiddenProjects.forEach(project => {
+        if (project.style.display === 'none' || project.style.display === '') {
+            project.style.display = 'flex';
+            btnText.textContent = 'Show Less';
+            btn.classList.add('expanded');
+        } else {
+            project.style.display = 'none';
+            btnText.textContent = 'Show More Projects';
+            btn.classList.remove('expanded');
+        }
+    });
+}
