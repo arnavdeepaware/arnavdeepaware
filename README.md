@@ -1,20 +1,27 @@
 <div align="center">
 
-<img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDAxcjM2d255MW12bDFtNzM3dXQ5aTR1cnFxMjIyZHZtMjB1dm9neiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ua7vVw9awZKWwLSYpW/giphy.webp" width="350" height="250" alt="Coding animation">
-
-# Hi, I'm Arnav
-
-### CS @ CCNY | SWE intern @ truCurrent | building useful software across AI, web, backend, and data
-
-<a href="https://linkedin.com/in/arnavdeepaware"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
-<a href="https://arnavdeepaware.vercel.app"><img src="https://img.shields.io/badge/Portfolio-111827?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio"></a>
-<a href="mailto:arnav.deepaware@gmail.com"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>
+<table>
+  <tr>
+    <td width="52%" align="center">
+      <h1>Hi, I'm Arnav</h1>
+      <h3>CS @ CCNY building useful software across AI, web, backend, and data</h3>
+      <p>
+        <a href="https://linkedin.com/in/arnavdeepaware"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+        <a href="https://arnavdeepaware.vercel.app"><img src="https://img.shields.io/badge/Portfolio-111827?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio"></a>
+        <a href="mailto:arnav.deepaware@gmail.com"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>
+      </p>
+    </td>
+        <td width="48%" align="center">
+      <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDAxcjM2d255MW12bDFtNzM3dXQ5aTR1cnFxMjIyZHZtMjB1dm9neiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ua7vVw9awZKWwLSYpW/giphy.webp" width="360" alt="Coding animation">
+    </td>
+  </tr>
+</table>
 
 </div>
 
 ---
 
-I like turning fuzzy ideas into working software: internal tools, dashboards, APIs, AI experiments, and web products that people can actually use. My current work sits around full-stack development, backend systems, practical AI, and data-heavy workflows.
+I like turning fuzzy ideas into working software: internal tools, dashboards, APIs, AI experiments, and web products that people can actually use. My work sits around full-stack development, backend systems, practical AI, and data-heavy workflows.
 
 These days, most of my projects orbit around:
 
