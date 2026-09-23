@@ -1,196 +1,90 @@
-/**
- * Portfolio Website JavaScript
- * Author: Arnav Deepaware
- * Description: Handles smooth scrolling, animations, and slider functionality
- */
+const navigation = document.querySelector('.navigation');
+const menuButton = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('#nav-links');
+const mobileViewport = window.matchMedia('(max-width: 767px)');
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-// This section has been removed as it was a duplicate of the previous IntersectionObserver implementation
-
-/**
- * Involvement Section Slider
- * Handles sliding functionality for involvement cards
- */
-let currentSlide = 0;
-const involvementSlider = document.querySelector('.involvement-slider');
-const slides = document.querySelectorAll('.involvement-item');
-let slidesPerView = window.innerWidth > 768 ? 3 : 1; // Add this line
-
-// Clone all slides for seamless loop
-function setupInfiniteSlider() {
-    // Clone first set of slides and append
-    slides.forEach(slide => {
-        const clone = slide.cloneNode(true);
-        involvementSlider.appendChild(clone);
-    });
-    
-    // Clone second set of slides and append
-    slides.forEach(slide => {
-        const clone = slide.cloneNode(true);
-        involvementSlider.appendChild(clone);
-    });
+function closeMenu({ restoreFocus = false } = {}) {
+  if (!menuButton || !navLinks) return;
+  menuButton.setAttribute('aria-expanded', 'false');
+  navLinks.classList.remove('is-open');
+  const icon = menuButton.querySelector('span');
+  if (icon) icon.textContent = '+';
+  if (restoreFocus) menuButton.focus();
 }
 
-// Add after setupInfiniteSlider()
-document.documentElement.style.setProperty('--total-slides', slides.length);
+function syncNavigation() {
+  if (!menuButton || !navLinks) return;
+  const focusWillBeHidden = mobileViewport.matches && navLinks.contains(document.activeElement);
+  closeMenu();
+  menuButton.hidden = !mobileViewport.matches;
+  if (focusWillBeHidden) menuButton.focus();
+}
 
-/**
- * Updates slider position based on direction
- * @param {number} direction - 1 for right, -1 for left
- */
-function slideInvolvement(direction) {
-    const totalSlides = slides.length;
-    currentSlide += direction;
-    
-    involvementSlider.style.transition = 'transform 0.5s ease';
-    updateSliderPosition();
+if (navigation && menuButton && navLinks) {
+  navigation.classList.add('is-enhanced');
+  syncNavigation();
+  mobileViewport.addEventListener('change', syncNavigation);
 
-    // Reset position when reaching clone boundary
-    if (currentSlide >= totalSlides) {
-        setTimeout(() => {
-            currentSlide = 0;
-            involvementSlider.style.transition = 'none';
-            updateSliderPosition();
-        }, 500);
-    } else if (currentSlide < 0) {
-        setTimeout(() => {
-            currentSlide = totalSlides - 1;
-            involvementSlider.style.transition = 'none';
-            updateSliderPosition();
-        }, 500);
+  menuButton.addEventListener('click', () => {
+    const expanded = menuButton.getAttribute('aria-expanded') !== 'true';
+    menuButton.setAttribute('aria-expanded', String(expanded));
+    navLinks.classList.toggle('is-open', expanded);
+    const icon = menuButton.querySelector('span');
+    if (icon) icon.textContent = expanded ? '−' : '+';
+  });
+
+  navigation.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+      closeMenu({ restoreFocus: true });
     }
+  });
+
+  navLinks.addEventListener('click', (event) => {
+    const link = event.target.closest('a');
+    if (!link || !mobileViewport.matches) return;
+    closeMenu();
+  });
+
+  navigation.addEventListener('focusout', (event) => {
+    if (!navigation.contains(event.relatedTarget)) closeMenu();
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!navigation.contains(event.target)) closeMenu();
+  });
 }
 
-/**
- * Updates slider position and button states
- */
-function updateSliderPosition() {
-    const slideWidth = 100 / slidesPerView;
-    const offset = -currentSlide * slideWidth;
-    involvementSlider.style.transform = `translateX(${offset}%)`;
-    
-    // Keep buttons always active for infinite loop
-    const leftButton = document.querySelector('.slider-arrow.left');
-    const rightButton = document.querySelector('.slider-arrow.right');
-    
-    leftButton.style.opacity = '1';
-    leftButton.style.cursor = 'pointer';
-    rightButton.style.opacity = '1';
-    rightButton.style.cursor = 'pointer';
-}
+const sectionLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+const sections = sectionLinks
+  .map((link) => document.querySelector(link.getAttribute('href')))
+  .filter(Boolean);
 
-// Handle window resize for responsive slider
-window.addEventListener('resize', () => {
-    const newSlidesPerView = window.innerWidth > 768 ? 3 : 1;
-    if (slidesPerView !== newSlidesPerView) {
-        currentSlide = 0;
-        updateSliderPosition();
-    }
-});
-
-// Initialize slider
-setupInfiniteSlider();
-updateSliderPosition();
-
-// Reset transition after any direct position changes
-involvementSlider.addEventListener('transitionend', () => {
-    involvementSlider.style.transition = 'transform 0.5s ease';
-});
-
-// Optional: Auto-slide functionality
-function autoSlide() {
-    slideInvolvement(1);
-}
-
-// Start auto-sliding every 5 seconds
-setInterval(autoSlide, 1000000);
-
-/**
- * Intersection Observer for scroll animations
- * Adds 'visible' class to sections when they enter viewport
- */
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
+if ('IntersectionObserver' in window && sections.length) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!visible) return;
+    sectionLinks.forEach((link) => {
+      const isCurrent = link.getAttribute('href') === `#${visible.target.id}`;
+      if (isCurrent) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
     });
-}, {
-    threshold: 0.1
-});
-
-// Observe all sections for scroll animations
-document.querySelectorAll('section').forEach((section) => {
-    observer.observe(section);
-});
-
-// Add this to your existing JavaScript
-let experienceCurrentSlide = 0;
-const experienceSlider = document.querySelector('.experience-slider');
-const experienceSlides = document.querySelectorAll('.experience-card');
-const experienceSlidesPerView = window.innerWidth > 768 ? 3 : 1;
-const experienceMaxSlide = Math.max(0, experienceSlides.length - experienceSlidesPerView);
-
-function slideExperience(direction) {
-    experienceCurrentSlide = Math.max(0, Math.min(experienceCurrentSlide + direction, experienceMaxSlide));
-    updateExperienceSliderPosition();
+  }, { rootMargin: '-20% 0px -65%', threshold: [0, 0.2, 0.5] });
+  sections.forEach((section) => sectionObserver.observe(section));
 }
 
-function updateExperienceSliderPosition() {
-    if (!experienceSlider) return;
-    const slideWidth = 100 / experienceSlidesPerView;
-    const offset = -experienceCurrentSlide * slideWidth;
-    experienceSlider.style.transform = `translateX(${offset}%)`;
-    
-    // Update button states
-    const leftButton = document.querySelector('.experience-container .slider-arrow.left');
-    const rightButton = document.querySelector('.experience-container .slider-arrow.right');
-    
-    leftButton.style.opacity = experienceCurrentSlide === 0 ? '0.5' : '1';
-    leftButton.style.cursor = experienceCurrentSlide === 0 ? 'not-allowed' : 'pointer';
-    
-    rightButton.style.opacity = experienceCurrentSlide === experienceMaxSlide ? '0.5' : '1';
-    rightButton.style.cursor = experienceCurrentSlide === experienceMaxSlide ? 'not-allowed' : 'pointer';
-}
+const revealItems = [...document.querySelectorAll('[data-reveal]')];
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Update experience slider on window resize
-window.addEventListener('resize', () => {
-    const newExperienceSlidesPerView = window.innerWidth > 768 ? 3 : 1;
-    if (experienceSlidesPerView !== newExperienceSlidesPerView) {
-        experienceCurrentSlide = 0;
-        updateExperienceSliderPosition();
-    }
-});
-
-// Initialize experience slider
-updateExperienceSliderPosition();
-
-/**
- * Toggle visibility of hidden projects
- */
-function toggleProjects() {
-    const hiddenProjects = document.querySelectorAll('.hidden-project');
-    const btn = document.querySelector('.show-more-btn');
-    const btnText = btn.querySelector('.show-more-text');
-    
-    hiddenProjects.forEach(project => {
-        if (project.style.display === 'none' || project.style.display === '') {
-            project.style.display = 'flex';
-            btnText.textContent = 'Show Less';
-            btn.classList.add('expanded');
-        } else {
-            project.style.display = 'none';
-            btnText.textContent = 'Show More Projects';
-            btn.classList.remove('expanded');
-        }
+if (!reducedMotion && 'IntersectionObserver' in window && revealItems.length) {
+  document.documentElement.classList.add('reveal-ready');
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
     });
+  }, { rootMargin: '0px 0px -8%', threshold: 0.08 });
+  revealItems.forEach((item) => revealObserver.observe(item));
 }

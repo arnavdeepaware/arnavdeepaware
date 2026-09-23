@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <clipPath id="portrait"><rect x="855" y="70" width="273" height="490" rx="18"/></clipPath>
+  </defs>
+  <rect width="1200" height="630" fill="#F7F8F5"/>
+  <rect x="830" y="46" width="322" height="538" rx="24" fill="#EDF3F1" stroke="#D8E1DF"/>
+  <image href="arnav-deepaware-headshot.webp" x="855" y="70" width="273" height="490" preserveAspectRatio="xMidYMid slice" clip-path="url(#portrait)"/>
+  <path d="M72 72h696" stroke="#D8E1DF"/>
+  <text x="72" y="132" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="600" fill="#006A78" letter-spacing="3">SOFTWARE ENGINEERING · NEW YORK</text>
+  <text x="72" y="224" font-family="Inter,Arial,sans-serif" font-size="48" font-weight="700" fill="#142B30">Arnav Deepaware.</text>
+  <g font-family="Inter,Arial,sans-serif" font-size="56" font-weight="600">
+    <text x="72" y="324" fill="#142B30">Backend systems.</text>
+    <text x="72" y="395" fill="#142B30">Data platforms.</text>
+    <text x="72" y="466" fill="#006A78">Full-stack products.</text>
+  </g>
+  <text x="72" y="535" font-family="Inter,Arial,sans-serif" font-size="22" fill="#596A6E">Computer Science at CCNY · Previously at truCurrent</text>
+  <text x="72" y="584" font-family="IBM Plex Mono,monospace" font-size="18" fill="#006A78">arnavd.co</text>
+</svg>
